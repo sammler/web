@@ -1,10 +1,10 @@
-
-<b>Logs</b>
-<ul>
-  <li><a [routerLink]="['logs/list']">List</a></li>
-</ul>
-
-<b>Overview</b>
-<ul>
-  <li><a [routerLink]="['/']">Overview</a></li>
-</ul>
+<section class="sidenav-content">
+  <a class="nav-link"[routerLink]="['/']">Overview</a>
+</section>
+<section class="nav-group">
+  <input id="navLogs" type="checkbox">
+  <label for="navLogs">Logs</label>
+  <ul class="nav-list">
+    <li><a class="nav-link" [routerLink]="['logs/list']">List</a></li>
+  </ul>
+</section>
