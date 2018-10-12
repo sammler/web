@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+
+  web:
+    image: sammlerio/web
+    ports:
+      - "4040:80"

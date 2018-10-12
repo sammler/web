@@ -1,0 +1,42 @@
+# =========================
+# Project specific
+# =========================
+.editorconfig
+.gitignore
+.npmignore
+.npmrc
+.verb.md
+LICENSE
+Makefile
+README*
+renovate.json
+
+# =========================
+# General
+# =========================
+.git
+./log
+./tmp
+
+# =========================
+# Docker
+# =========================
+.dockerignore
+*Dockerfile*
+*docker-compose*
+
+# =========================
+# IDEs
+# =========================
+
+# IntelliJ / Webstorm
+.idea
+
+# Visual Code
+.vscode
+
+# =========================
+# NPM
+# =========================
+node_modules
+package.lock.json
