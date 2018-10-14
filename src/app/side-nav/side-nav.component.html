@@ -1,10 +1,20 @@
 <section class="sidenav-content">
   <a class="nav-link"[routerLink]="['/']">Overview</a>
-</section>
-<section class="nav-group">
-  <input id="navLogs" type="checkbox">
-  <label for="navLogs">Logs</label>
-  <ul class="nav-list">
-    <li><a class="nav-link" [routerLink]="['logs/list']">List</a></li>
-  </ul>
+  <section class="nav-group">
+    <input id="navStrategies" type="checkbox">
+    <label for="navStrategies">Strategies</label>
+    <ul class="nav-list">
+      <li><a class="nav-link" [routerLink]="['strategy/github']">GitHub</a></li>
+      <li><a class="nav-link" [routerLink]="['strategy/heartbeat']">Heartbeat</a></li>
+      <li><a class="nav-link" [routerLink]="['strategy/rss']">RSS</a></li>
+      <li><a class="nav-link" [routerLink]="['strategy/twitter']">Twitter</a></li>
+    </ul>
+  </section>
+  <section class="nav-group">
+    <input id="navLogs" type="checkbox">
+    <label for="navLogs">Logs</label>
+    <ul class="nav-list">
+      <li><a class="nav-link" [routerLink]="['logs/list']">List</a></li>
+    </ul>
+  </section>
 </section>
