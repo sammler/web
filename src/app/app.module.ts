@@ -1,30 +1,33 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {RouterModule } from '@angular/router';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {ClarityModule} from '@clr/angular';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 import {appRoutes} from './routes';
 
-import { LogsComponent } from './admin/logs/logs.component';
-import { OverviewComponent } from './overview/overview.component';
-import { ClarityModule } from '@clr/angular';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { HeaderComponent } from './header/header.component';
-import { HeartbeatComponent } from './strategy/heartbeat/heartbeat.component';
-import { TwitterComponent } from './strategy/twitter/twitter.component';
-import { RssComponent } from './strategy/rss/rss.component';
-import { GithubComponent } from './strategy/github/github.component';
-import { LogoutComponent } from './user/logout/logout.component';
-import { PreferencesComponent } from './user/preferences/preferences.component';
-import { AdminComponent } from './admin/admin.component';
+import {SideNavComponent} from './side-nav/side-nav.component';
+import {HeaderComponent} from './header/header.component';
+
+import {HomeComponent} from './home/home.component';
+
+import {LogsComponent} from './admin/logs/logs.component';
+import {AdminComponent} from './admin/admin.component';
+
+import {DashboardComponent} from './user/dashboard/dashboard.component';
+import {HeartbeatComponent} from './user/strategy/heartbeat/heartbeat.component';
+import {TwitterComponent} from './user/strategy/twitter/twitter.component';
+import {RssComponent} from './user/strategy/rss/rss.component';
+import {GithubComponent} from './user/strategy/github/github.component';
+import {LogoutComponent} from './user/logout/logout.component';
+import {PreferencesComponent} from './user/preferences/preferences.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogsComponent,
-    OverviewComponent,
     SideNavComponent,
     HeaderComponent,
     HeartbeatComponent,
@@ -33,7 +36,9 @@ import { AdminComponent } from './admin/admin.component';
     GithubComponent,
     LogoutComponent,
     PreferencesComponent,
-    AdminComponent
+    AdminComponent,
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,4 +49,5 @@ import { AdminComponent } from './admin/admin.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
