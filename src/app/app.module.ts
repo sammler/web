@@ -16,6 +16,9 @@ import { HeartbeatComponent } from './strategy/heartbeat/heartbeat.component';
 import { TwitterComponent } from './strategy/twitter/twitter.component';
 import { RssComponent } from './strategy/rss/rss.component';
 import { GithubComponent } from './strategy/github/github.component';
+import { AboutComponent } from './about/about.component';
+import { LogoutComponent } from './logout/logout.component';
+import { PreferencesComponent } from './preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { GithubComponent } from './strategy/github/github.component';
     HeartbeatComponent,
     TwitterComponent,
     RssComponent,
-    GithubComponent
+    GithubComponent,
+    AboutComponent,
+    LogoutComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,
