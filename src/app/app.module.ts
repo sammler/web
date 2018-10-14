@@ -22,7 +22,10 @@ import {TwitterComponent} from './user/strategy/twitter/twitter.component';
 import {RssComponent} from './user/strategy/rss/rss.component';
 import {GithubComponent} from './user/strategy/github/github.component';
 import {LogoutComponent} from './user/logout/logout.component';
-import {PreferencesComponent} from './user/preferences/preferences.component';
+import {SettingsComponent} from './user/settings/settings.component';
+import { LoginComponent } from './user/login/login.component';
+import {StrategyGithubDashboard} from './user/strategy/github/dashboard/strategy-github-dashboard.component';
+import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-github-settings.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +38,13 @@ import {PreferencesComponent} from './user/preferences/preferences.component';
     RssComponent,
     GithubComponent,
     LogoutComponent,
-    PreferencesComponent,
+    SettingsComponent,
     AdminComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent,
+    StrategyGithubDashboard,
+    StrategyGithubSettings
   ],
   imports: [
     BrowserModule,

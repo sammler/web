@@ -1,3 +1,18 @@
-<p>
-  github works!
-</p>
+<h2>GitHub</h2>
+
+<ul id="demoTabs" class="nav" role="tablist">
+  <li role="presentation" class="nav-item">
+    <button id="tab1" class="btn btn-link nav-link active" aria-controls="panel1"
+            aria-selected="true" type="button">Dashboard</button>
+  </li>
+  <li role="presentation" class="nav-item">
+    <button id="tabSettings" class="btn btn-link nav-link" aria-controls="panel3"
+            aria-selected="false" type="button">Settings</button>
+  </li>
+</ul>
+<section id="panel1" role="tabpanel" aria-labelledby="tab1">
+  <strategy-github-dashboard></strategy-github-dashboard>
+</section>
+<section id="panel3" role="tabpanel" aria-labelledby="tabSettings" aria-hidden="true">
+  <strategy-github-settings></strategy-github-settings>
+</section>
