@@ -5,7 +5,6 @@ import {RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LogsComponent } from './logs/logs.component';
 
-
 import {appRoutes} from './routes';
 import { OverviewComponent } from './overview/overview.component';
 import { ClarityModule } from '@clr/angular';
@@ -16,9 +15,8 @@ import { HeartbeatComponent } from './strategy/heartbeat/heartbeat.component';
 import { TwitterComponent } from './strategy/twitter/twitter.component';
 import { RssComponent } from './strategy/rss/rss.component';
 import { GithubComponent } from './strategy/github/github.component';
-import { AboutComponent } from './about/about.component';
-import { LogoutComponent } from './logout/logout.component';
-import { PreferencesComponent } from './preferences/preferences.component';
+import { LogoutComponent } from './user/logout/logout.component';
+import { PreferencesComponent } from './user/preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +29,6 @@ import { PreferencesComponent } from './preferences/preferences.component';
     TwitterComponent,
     RssComponent,
     GithubComponent,
-    AboutComponent,
     LogoutComponent,
     PreferencesComponent
   ],
