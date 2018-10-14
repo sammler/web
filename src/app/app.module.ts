@@ -8,8 +8,8 @@ import {AppComponent} from './app.component';
 
 import {appRoutes} from './routes';
 
-import {SideNavComponent} from './side-nav/side-nav.component';
-import {HeaderComponent} from './header/header.component';
+import {SideNavComponent} from './shared/side-nav/side-nav.component';
+import {HeaderComponent} from './shared/header/header.component';
 
 import {HomeComponent} from './home/home.component';
 
