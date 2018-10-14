@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {LogsComponent} from './logs/logs.component';
+import {LogsComponent} from './admin/logs/logs.component';
 import {OverviewComponent} from './overview/overview.component';
 import {HeartbeatComponent} from './strategy/heartbeat/heartbeat.component';
 import {TwitterComponent} from './strategy/twitter/twitter.component';
@@ -14,7 +14,7 @@ export const appRoutes: Routes = [
   {path: 'strategy/heartbeat', component: HeartbeatComponent  },
   {path: 'strategy/twitter', component:  TwitterComponent },
   {path: 'strategy/rss', component:  RssComponent },
-  {path: 'logs/list', component: LogsComponent  },
+  {path: 'admin/logs/list', component: LogsComponent  },
   {path: 'user/logout', component: LogoutComponent  },
   {path: 'user/preferences', component: PreferencesComponent  },
   {path: '', component: OverviewComponent }

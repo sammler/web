@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import {RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { LogsComponent } from './logs/logs.component';
 
 import {appRoutes} from './routes';
+
+import { LogsComponent } from './admin/logs/logs.component';
 import { OverviewComponent } from './overview/overview.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +18,7 @@ import { RssComponent } from './strategy/rss/rss.component';
 import { GithubComponent } from './strategy/github/github.component';
 import { LogoutComponent } from './user/logout/logout.component';
 import { PreferencesComponent } from './user/preferences/preferences.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { PreferencesComponent } from './user/preferences/preferences.component';
     RssComponent,
     GithubComponent,
     LogoutComponent,
-    PreferencesComponent
+    PreferencesComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
