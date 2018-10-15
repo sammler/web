@@ -11,32 +11,14 @@ import {AdminModule} from './admin/admin.module';
 import {AppComponent} from './app.component';
 import {SideNavComponent} from './shared/side-nav/side-nav.component';
 import {HeaderComponent} from './shared/header/header.component';
+import {HomeComponent} from './home/home.component';
 
 import {appRoutes} from './app.routes';
+import {StrategiesModule} from './strategies/strategies.module';
 
-
-import {HomeComponent} from './home/home.component';
-import {HeartbeatComponent} from './user/strategy/heartbeat/heartbeat.component';
-import {TwitterComponent} from './user/strategy/twitter/twitter.component';
-import {RssComponent} from './user/strategy/rss/rss.component';
-import {GithubComponent} from './user/strategy/github/github.component';
-import {StrategyGithubDashboard} from './user/strategy/github/dashboard/strategy-github-dashboard.component';
-import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-github-settings.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SideNavComponent,
-    HeaderComponent,
-    HeartbeatComponent,
-    TwitterComponent,
-    RssComponent,
-    GithubComponent,
-    HomeComponent,
-    StrategyGithubDashboard,
-    StrategyGithubSettings
-  ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
@@ -44,7 +26,17 @@ import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-g
     BrowserAnimationsModule,
     CoreModule,
     UserModule,
-    AdminModule
+    AdminModule,
+    StrategiesModule
+  ],
+  declarations: [
+    AppComponent,
+    SideNavComponent,
+    HeaderComponent,
+    HomeComponent,
+  ],
+  exports: [
+
   ],
   providers: [],
   bootstrap: [AppComponent]

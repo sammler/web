@@ -8,17 +8,20 @@ import {RouterModule} from '@angular/router';
 import {userRoutes} from './user.routes';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild(userRoutes)
+  ],
   declarations: [
     DashboardComponent,
     LogoutComponent,
     SettingsComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(userRoutes)
-  ],
   exports: [
     RouterModule
+  ],
+  providers: [
+
   ]
 })
 export class UserModule {
