@@ -11,6 +11,7 @@
         <clr-icon shape="caret down"></clr-icon>
       </button>
       <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <a [routerLink]="['login']" clrDropdownItem>Login</a>
         <a [routerLink]="['user/settings']" clrDropdownItem>Settings</a>
         <a [routerLink]="['user/logout']" clrDropdownItem>Log out</a>
       </clr-dropdown-menu>

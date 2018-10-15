@@ -9,7 +9,6 @@ import {SettingsComponent} from './user/settings/settings.component';
 import {LogoutComponent} from './user/logout/logout.component';
 import {HomeComponent} from './home/home.component';
 import {DashboardComponent} from './user/dashboard/dashboard.component';
-import {LoginComponent} from './user/login/login.component';
 import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-github-settings.component';
 import {StrategyGithubDashboard} from './user/strategy/github/dashboard/strategy-github-dashboard.component';
 
@@ -23,7 +22,6 @@ export const appRoutes: Routes = [
   {path: 'user/strategy/twitter', component:  TwitterComponent },
   {path: 'user/strategy/rss', component:  RssComponent },
   {path: 'admin/logs/list', component: LogsComponent  },
-  {path: 'user/login', component: LoginComponent  },
   {path: 'user/logout', component: LogoutComponent  },
   {path: 'user/settings', component: SettingsComponent  },
   {path: '', component: HomeComponent }

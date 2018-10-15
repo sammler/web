@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
 
-import {appRoutes} from './routes';
+import {appRoutes} from './app.routes';
 
 import {SideNavComponent} from './shared/side-nav/side-nav.component';
 import {HeaderComponent} from './shared/header/header.component';
@@ -23,9 +23,9 @@ import {RssComponent} from './user/strategy/rss/rss.component';
 import {GithubComponent} from './user/strategy/github/github.component';
 import {LogoutComponent} from './user/logout/logout.component';
 import {SettingsComponent} from './user/settings/settings.component';
-import { LoginComponent } from './user/login/login.component';
 import {StrategyGithubDashboard} from './user/strategy/github/dashboard/strategy-github-dashboard.component';
 import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-github-settings.component';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,6 @@ import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-g
     AdminComponent,
     HomeComponent,
     DashboardComponent,
-    LoginComponent,
     StrategyGithubDashboard,
     StrategyGithubSettings
   ],
@@ -50,7 +49,8 @@ import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-g
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
