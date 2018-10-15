@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {ClarityModule} from '@clr/angular';
+import {ClarityModule, ClrFormsNextModule} from '@clr/angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {CoreModule} from './core/core.module';
@@ -24,6 +24,7 @@ import {AuthService} from './shared/auth.service';
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     ClarityModule,
+    ClrFormsNextModule,
     BrowserAnimationsModule,
     CoreModule,
     UserModule,

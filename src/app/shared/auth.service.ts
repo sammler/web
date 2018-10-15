@@ -5,9 +5,23 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
+  private loggedIn: boolean = false;
+
   constructor() { }
 
-  public isAuthenticated(): boolean {
-    return false;
+  isAuthenticated(): boolean {
+    return this.loggedIn;
   }
+
+  login(username: String, password: String) {
+
+    this.loggedIn = true;
+  }
+
+  logout() {
+    localStorage.removeItem('auth_token');
+    this.loggedIn = false;
+  }
+
+
 }
