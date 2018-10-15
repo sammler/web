@@ -15,6 +15,7 @@ import {HomeComponent} from './home/home.component';
 
 import {appRoutes} from './app.routes';
 import {StrategiesModule} from './strategies/strategies.module';
+import {AuthService} from './shared/auth.service';
 
 
 
@@ -38,7 +39,9 @@ import {StrategiesModule} from './strategies/strategies.module';
   exports: [
 
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
