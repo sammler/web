@@ -16,16 +16,14 @@ import {HomeComponent} from './home/home.component';
 import {LogsComponent} from './admin/logs/logs.component';
 import {AdminComponent} from './admin/admin.component';
 
-import {DashboardComponent} from './user/dashboard/dashboard.component';
 import {HeartbeatComponent} from './user/strategy/heartbeat/heartbeat.component';
 import {TwitterComponent} from './user/strategy/twitter/twitter.component';
 import {RssComponent} from './user/strategy/rss/rss.component';
 import {GithubComponent} from './user/strategy/github/github.component';
-import {LogoutComponent} from './user/logout/logout.component';
-import {SettingsComponent} from './user/settings/settings.component';
 import {StrategyGithubDashboard} from './user/strategy/github/dashboard/strategy-github-dashboard.component';
 import {StrategyGithubSettings} from './user/strategy/github/settings/strategy-github-settings.component';
 import {CoreModule} from './core/core.module';
+import {UserModule} from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -37,11 +35,8 @@ import {CoreModule} from './core/core.module';
     TwitterComponent,
     RssComponent,
     GithubComponent,
-    LogoutComponent,
-    SettingsComponent,
     AdminComponent,
     HomeComponent,
-    DashboardComponent,
     StrategyGithubDashboard,
     StrategyGithubSettings
   ],
@@ -50,7 +45,8 @@ import {CoreModule} from './core/core.module';
     RouterModule.forRoot(appRoutes),
     ClarityModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
