@@ -9,14 +9,29 @@ gen-readme:					                ## Generate README.md (using docker-verb)
 	docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb
 .PHONY: gen-readme
 
+up-dev:
+	docker-compose --f=docker-compose.dev.yml up
+.PHONY: up-dev
 
-build:
-	docker build -t sammlerio/web .
+down-dev:
+	docker-compose --f=docker-compose.dev.yml down -t 0
+.PHONY: down-dev
+
+build:															## Build the docker image (prod)
+	docker build -t sammlerio/web ./Dockerfile.prod
 .PHONY: build
+
+build-dev:													## Build the docker image (dev)
+	docker build --force-rm -t sammlerio/web-dev -f Dockerfile.dev .
+.PHONY: build-dev
 
 run: build
 	 docker run -d -p 4040:80 sammlerio/web
 .PHONY: run
+
+run-dev: build-dev
+	docker run -d -p 4040:4200 sammlerio/web-dev
+.PHONY: run-dev
 
 up:
 	docker-compose up -d

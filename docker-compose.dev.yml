@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+
+  web:
+   image: sammlerio/web-dev
+   container_name: web
+   ports:
+     - "4200:4200"
+   volumes:
+     - ./src:/opt/web/src
+
+  mongo:
+    image: mongo:3.4.7
+    container_name: mongo
+    ports:
+    - "27017:27017"

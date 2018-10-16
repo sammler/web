@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 
 import {LogsComponent} from './logs/logs.component';
 
-import {adminRoutes} from './admin.routes'
+import {adminRoutes} from './admin.routes';
 
 @NgModule({
   imports: [

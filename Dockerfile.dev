@@ -1,0 +1,21 @@
+ARG NODE_VER="10.9.0"
+ARG PORT=4200
+
+FROM node:${NODE_VER}
+
+ENV HOME_DIR "opt/web"
+
+RUN mkdir -p $HOME_DIR
+WORKDIR $HOME_DIR
+
+COPY package.json angular.json tsconfig.json ./
+
+RUN npm config set loglevel warn
+RUN npm install --quiet --no-package-lock
+
+COPY . /opt/web
+
+ENV PORT=${PORT}
+EXPOSE 4200
+
+CMD ["npm", "run", "start"]
