@@ -14,4 +14,6 @@ services:
     image: mongo:3.4.7
     container_name: mongo
     ports:
-    - "27017:27017"
+      - "27017:27017"
+    logging:
+        driver: none
