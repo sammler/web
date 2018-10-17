@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
+import {of, throwError} from 'rxjs';
 
 
 @Injectable({
@@ -19,7 +19,35 @@ export class AuthService {
     return this.loggedIn;
   }
 
-  login(username: String, password: String) {
+  login(username: string, password: string) {
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post<any>(
+      '/auth-service/v1/user/login',
+      { username, password }
+      )
+      .pipe(map((res: any) => {
+
+        if (res.status !== 200) {
+          throwError(res);
+        }
+
+        if (res) {
+          // store user details and basic auth credentials in local storage
+          // to keep user logged in between page refreshes
+          // data.authdata = window.btoa(username + ':' + password);
+          //localStorage.setItem('currentUser', JSON.stringify(user));
+
+          localStorage.setItem('auth_token', res['auth_token']);
+          this.loggedIn = true;
+        }
+        return res;
+      }));
+  }
+
+  loginold(username: String, password: String) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
 
@@ -34,10 +62,13 @@ export class AuthService {
         if (data['success']) {
           localStorage.setItem('auth_token', data['auth_token']);
           this.loggedIn = true;
+        } else {
+          console.log(data);
         }
       }))
       .pipe(catchError(err => {
-        console.error(err);
+        this.loggedIn = false;
+        console.error('[auth-service:login] We have an error: ', err);
         return of(false);
       }));
   }

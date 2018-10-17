@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../shared/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ClrIconModule} from '@clr/angular';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +16,16 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  loginError = false;
+  loginMsg = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {
+  }
 
 
   ngOnInit() {
@@ -37,27 +42,31 @@ export class LoginComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
 
     this.submitted = true;
 
     if (this.loginForm.invalid) {
-      console.error('Login form is invalid');
-      console.log(this.loginForm);
       return;
     }
 
     this.loading = true;
-    console.log('Login data', this.f.username.value, this.f.password.value);
 
-    this.authService.login(this.f.username.value, this.f.password.value).subscribe(result => {
-      console.log('login-result', result);
-      if (result) {
-        this.router.navigate([this.returnUrl]);
-      }
-    });
+    debugger;
+    this.authService.login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        result => {
+          this.router.navigate([this.returnUrl]);
+        }, error => {
+          console.error('We have a login error: ', error);
+          this.loginError = true;
+          this.loginMsg = error.error.message;
+        });
   }
 
 }
