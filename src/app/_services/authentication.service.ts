@@ -34,7 +34,6 @@ export class AuthenticationService {
           throwError(res);
         }
 
-        debugger;
         if (res) {
           // store user details and basic auth credentials in local storage
           // to keep user logged in between page refreshes

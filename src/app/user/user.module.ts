@@ -1,9 +1,13 @@
+// Deps
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+
+// Components
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {LogoutComponent} from './logout/logout.component';
 import {SettingsComponent} from './settings/settings.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {RouterModule} from '@angular/router';
+import {ProfileComponent} from './profile/profile.component';
 
 import {userRoutes} from './user.routes';
 
@@ -15,14 +19,13 @@ import {userRoutes} from './user.routes';
   declarations: [
     DashboardComponent,
     LogoutComponent,
+    ProfileComponent,
     SettingsComponent,
   ],
   exports: [
     RouterModule
   ],
-  providers: [
-
-  ]
+  providers: []
 })
 export class UserModule {
 }
