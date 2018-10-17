@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../shared/auth.service';
+import {AuthenticationService} from '../../_services/authentication.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClrIconModule} from '@clr/angular';
 import {first} from 'rxjs/operators';
 
 @Component({
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthenticationService
   ) {
   }
 

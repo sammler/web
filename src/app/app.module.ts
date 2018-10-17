@@ -1,22 +1,31 @@
+// Deps
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {ClarityModule, ClrFormsNextModule, ClrIconModule} from '@clr/angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+// Modules
+import {AdminModule} from './admin/admin.module';
 import {CoreModule} from './core/core.module';
 import {UserModule} from './user/user.module';
-import {AdminModule} from './admin/admin.module';
+import {StrategiesModule} from './strategies/strategies.module';
 
+// Components
+import {AlertComponent} from './shared/alert/alert.component';
 import {AppComponent} from './app.component';
-import {SideNavComponent} from './shared/side-nav/side-nav.component';
 import {HeaderComponent} from './shared/header/header.component';
-import {HomeComponent} from './home/home.component';
+import {SideNavComponent} from './shared/side-nav/side-nav.component';
+
+// Services
+import {AlertService} from './_services/alert.service';
+import {AuthenticationService} from './_services';
+import {UserService} from './_services/user.service';
+
 
 import {appRoutes} from './app.routes';
-import {StrategiesModule} from './strategies/strategies.module';
-import {AuthService} from './shared/auth.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ErrorInterceptor} from './_helpers/error.interceptor';
 
 
 @NgModule({
@@ -37,13 +46,14 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     SideNavComponent,
     HeaderComponent,
-    HomeComponent,
+    AlertComponent
   ],
-  exports: [
-
-  ],
+  exports: [],
   providers: [
-    AuthService
+    AlertService,
+    AuthenticationService,
+    UserService,
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

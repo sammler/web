@@ -3,7 +3,7 @@ import {Routes} from '@angular/router';
 import {SettingsComponent} from './settings/settings.component';
 import {LogoutComponent} from './logout/logout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {AuthGuardService as AuthGuard} from '../shared/auth-guard.service';
+import {AuthGuardService as AuthGuard} from '../_services/auth-guard.service';
 
 export const userRoutes: Routes = [
   {path: 'user/dashboard', component: DashboardComponent, canActivate: [AuthGuard]  },

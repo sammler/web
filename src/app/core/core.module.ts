@@ -6,19 +6,22 @@ import {coreRoutes} from './routes';
 import {LoginComponent} from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ClrIconModule} from '@clr/angular';
+import {ClrFormsNextModule, ClrIconModule} from '@clr/angular';
+import { RegisterComponent } from './register/register.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ClrIconModule,
+    ClrFormsNextModule,
     ReactiveFormsModule,
     RouterModule.forChild(coreRoutes)
   ],

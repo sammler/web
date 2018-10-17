@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {AuthGuardService as AuthGuard} from '../shared/auth-guard.service';
+import {AuthGuardService as AuthGuard} from '../_services/auth-guard.service';
 
 import {LogsComponent} from './logs/logs.component';
 
