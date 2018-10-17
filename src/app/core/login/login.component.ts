@@ -52,17 +52,12 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     console.log('Login data', this.f.username.value, this.f.password.value);
 
-
-    this.authService.login(this.f.username.value, this.f.password.value);
-    this.router.navigate([this.returnUrl]);
-
-
-    // this.authService.login(username, password).subscribe(result => {
-    //   console.log('login-result', result);
-    //   if (result) {
-    //     this.router.navigate(['']);
-    //   }
-    // });
+    this.authService.login(this.f.username.value, this.f.password.value).subscribe(result => {
+      console.log('login-result', result);
+      if (result) {
+        this.router.navigate([this.returnUrl]);
+      }
+    });
   }
 
 }

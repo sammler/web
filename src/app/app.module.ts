@@ -16,6 +16,7 @@ import {HomeComponent} from './home/home.component';
 import {appRoutes} from './app.routes';
 import {StrategiesModule} from './strategies/strategies.module';
 import {AuthService} from './shared/auth.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -29,7 +30,8 @@ import {AuthService} from './shared/auth.service';
     CoreModule,
     UserModule,
     AdminModule,
-    StrategiesModule
+    StrategiesModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,

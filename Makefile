@@ -9,16 +9,16 @@ gen-readme:					                ## Generate README.md (using docker-verb)
 	docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb
 .PHONY: gen-readme
 
-up-dev:
+up-dev:															## Start the development environment
 	docker-compose --f=docker-compose.dev.yml up
 .PHONY: up-dev
 
-down-dev:
+down-dev:														## Tear down the development environment
 	docker-compose --f=docker-compose.dev.yml down -t 0
 .PHONY: down-dev
 
 build:															## Build the docker image (prod)
-	docker build -t sammlerio/web ./Dockerfile.prod
+	docker build -t sammlerio/web -f Dockerfile.prod .
 .PHONY: build
 
 build-dev:													## Build the docker image (dev)

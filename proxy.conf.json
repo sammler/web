@@ -1,0 +1,10 @@
+{
+  "/auth-service": {
+    "target": "http://auth-service:3010",
+    "secure": false,
+    "pathRewrite": {
+      "^/auth-service": ""
+    },
+    "logLevel": "debug"
+  }
+}
