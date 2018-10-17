@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 import {of, throwError} from 'rxjs';
+import {User} from '../_models/user';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -11,12 +13,24 @@ export class AuthenticationService {
 
   private loggedIn = false;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient
+  ) {
     this.loggedIn = !!localStorage.getItem('currentUser');
   }
 
   isAuthenticated(): boolean {
     return this.loggedIn;
+  }
+
+  get currentUser(): User {
+    let u: string = localStorage.getItem('currentUser');
+    if (u) {
+      const jwtHelper = new JwtHelperService();
+      let decoded = jwtHelper.decodeToken(u);
+      return decoded;
+    }
+    return null;
   }
 
   login(username: string, password: string) {

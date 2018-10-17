@@ -26,6 +26,7 @@ import {UserService} from './_services/user.service';
 import {appRoutes} from './app.routes';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {ErrorInterceptor} from './_helpers/error.interceptor';
   providers: [
     AlertService,
     AuthenticationService,
+    JwtHelperService,
     UserService,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
