@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../_services';
 import {UserService} from '../../_services/user.service';
 
@@ -8,6 +8,7 @@ import {UserService} from '../../_services/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  private JSON;
 
   constructor(
     private authService: AuthenticationService,

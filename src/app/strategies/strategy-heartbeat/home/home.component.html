@@ -1,0 +1,16 @@
+<h2>Heartbeat</h2>
+
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink id="link1">Insights</button>
+    <clr-tab-content id="content1" *clrIfActive>
+      <strategy-heartbeat-dashboard></strategy-heartbeat-dashboard>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Settings</button>
+    <clr-tab-content *clrIfActive="true">
+      <strategy-heartbeat-settings></strategy-heartbeat-settings>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

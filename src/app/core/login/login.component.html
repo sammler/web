@@ -1,6 +1,6 @@
 <h2>Login</h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
+<form clrForm clrLayout="horizontal" (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
   <section class="form-block">
     <div class="from-group" *ngIf="loginError">
       <div class="alert alert-danger">
@@ -16,32 +16,31 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
+
+    <clr-input-container>
       <label for="username">Login</label>
-      <input type="text"
+      <input clrInput
+             type="text"
              id="username"
              formControlName="username"
              placeholder="Enter value here"
              size="45">
-      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-        <div *ngIf="f.username.errors.required">Username is required</div>
-      </div>
-    </div>
-    <div class="form-group">
+      <clr-control-error *clrIfError="'required'">Username is required.</clr-control-error>
+    </clr-input-container>
+
+    <clr-input-container>
       <label for="password">Password</label>
-      <input type="password"
+      <input clrInput
+             type="password"
              formControlName="password"
              id="password"
              required
              placeholder="Enter your password"
              size="35">
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-  </section>
-  <section>
-    <a [routerLink]="['/register']">Register</a>
+      <clr-control-error *clrIfError="'required'">Password is required.</clr-control-error>
+    </clr-input-container>
+      <br/>
+      <button type="submit" class="btn btn-primary">Login</button>
+      or <a [routerLink]="['/register']">Register</a>
   </section>
 </form>

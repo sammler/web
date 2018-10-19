@@ -6,5 +6,12 @@
       "^/auth-service": ""
     },
     "logLevel": "debug"
+  },
+  "/log-service": {
+    "target": "http://log-service:3004",
+    "secure": false,
+    "pathRewrite": {
+      "^/log-service": ""
+    }
   }
 }
