@@ -9,7 +9,11 @@ gen-readme:					                ## Generate README.md (using docker-verb)
 	docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb
 .PHONY: gen-readme
 
-up-dev:															## Start the development environment
+up-dev-i:															## Start the development environment (interactive)
+	docker-compose --f=docker-compose.dev.yml up
+.PHONY: up-dev-i
+
+up-dev:															## Start the development environment (daemon mode)
 	docker-compose --f=docker-compose.dev.yml up
 .PHONY: up-dev
 

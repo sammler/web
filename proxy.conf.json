@@ -7,11 +7,11 @@
     },
     "logLevel": "debug"
   },
-  "/log-service": {
-    "target": "http://log-service:3004",
+  "/audit-log-service": {
+    "target": "http://audit-log-service:3004",
     "secure": false,
     "pathRewrite": {
-      "^/log-service": ""
+      "^/audit-log-service": ""
     }
   }
 }

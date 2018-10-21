@@ -61,6 +61,9 @@ export class AuthenticationService {
   }
 
   logout() {
+
+
+
     localStorage.removeItem('currentUser');
     this.loggedIn = false;
   }

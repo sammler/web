@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Day</th>
+    <th>Hour</th>
+    <th>Action</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let log of auditLogs">
+    <td>{{moment(log.ts).format('YYYY-MM-DD')}}</td>
+    <td>{{moment(log.ts).format('HH:mm:ss')}}</td>
+    <td>{{log.event_name}}</td>
+    <td>{{log.description}}</td>
+  </tr>
+  </tbody>
+</table>

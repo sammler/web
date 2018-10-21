@@ -2,6 +2,21 @@ version: '3.3'
 
 services:
 
+  nats-streaming:
+    image: nats-streaming
+    ports:
+      - "4222:4222"
+      - "4223:4223"
+      - "8223:8223"
+      - "8222:8222"
+    volumes:
+      - ./.datastore:/datastore
+    command: [
+      "-m", "8222",
+      "--store", "FILE",
+      "--dir", "datastore"
+    ]
+
   web:
    image: sammlerio/web-dev
    container_name: web
@@ -14,7 +29,7 @@ services:
      - mongo
 
   mongo:
-    image: mongo:3.4.7
+    image: mongo
     container_name: mongo
     ports:
       - "27017:27017"
@@ -33,19 +48,25 @@ services:
       - MONGODB_DEBUG=false
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
     depends_on:
       - mongo
+      - nats-streaming
 
-  log-service:
-    image: sammlerio/log-service
-    container_name: log-service
+  audit-log-service:
+    image: sammlerio/audit-log-service
+    container_name: audit-log-service
     ports:
       - "3004:3004"
     environment:
       - PORT=3004
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
     depends_on:
       - mongo
+      - nats-streaming
 
 

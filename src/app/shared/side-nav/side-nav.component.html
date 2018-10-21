@@ -1,5 +1,9 @@
 <section class="sidenav-content">
-  <a class="nav-link"[routerLink]="['/user/dashboard']" routerLinkActive="active">Dashboard</a>
+
+  <!-- Dashboard -->
+  <a class="nav-link" [routerLink]="['/user/dashboard']" routerLinkActive="active">Dashboard</a>
+
+  <!-- Strategies -->
   <section class="nav-group">
     <input id="navStrategies" type="checkbox">
     <label for="navStrategies">Strategies</label>
@@ -8,11 +12,17 @@
       <li><a class="nav-link" [routerLink]="['user/strategy/heartbeat']" routerLinkActive="active">Heartbeat</a></li>
     </ul>
   </section>
+
+  <!-- User Security -->
+  <a class="nav-link" [routerLink]="['/user/security']" routerLinkActive="active">Security</a>
+
+  <!-- Admin -->
   <section class="nav-group">
-      <input id="navAdmin" type="checkbox">
-      <label for="navAdmin">Admin</label>
-      <ul class="nav-list">
-        <li><a class="nav-link" [routerLink]="['admin/logs/list']">Logs</a></li>
-      </ul>
-    </section>
+    <input id="navAdmin" type="checkbox"/>
+    <label for="navAdmin">Admin</label>
+    <ul class="nav-list">
+      <li><a class="nav-link" [routerLink]="['admin/logs/list']">Logs</a></li>
+    </ul>
+  </section>
+
 </section>

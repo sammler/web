@@ -9,12 +9,15 @@ import {LogoutComponent} from './logout/logout.component';
 import {SettingsComponent} from './settings/settings.component';
 import {ProfileComponent} from './profile/profile.component';
 
+// Others
 import {userRoutes} from './user.routes';
+import {SecurityModule} from './security/security.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(userRoutes)
+    RouterModule.forChild(userRoutes),
+    SecurityModule
   ],
   declarations: [
     DashboardComponent,
