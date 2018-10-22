@@ -10,6 +10,7 @@ import * as moment from 'moment';
 export class AuditLogsComponent implements OnInit {
 
   auditLogs: any[];
+  moment: any;
 
   constructor(private auditLogService: AuditLogsService) {
     this.moment = moment;
@@ -22,7 +23,10 @@ export class AuditLogsComponent implements OnInit {
         console.log('audit-logs', data);
         this.auditLogs = data;
       })
+  }
 
+  refresh() {
+    console.log('OK, refreshing ...');
   }
 
 }

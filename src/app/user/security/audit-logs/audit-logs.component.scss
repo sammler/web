@@ -1,0 +1,14 @@
+.action-box {
+  width: 100%;
+  position: relative;
+  margin-top:20px;
+  padding-bottom:10px;
+  .action-box-content {
+    cursor: pointer;
+    float:right;
+    span {
+      padding-left:10px;
+    }
+
+  }
+}

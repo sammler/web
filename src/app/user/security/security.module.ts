@@ -9,13 +9,14 @@ import {RouterModule} from '@angular/router';
 // Others
 import {userSecurityRoutes} from './security.routes';
 import { AuditLogsComponent } from './audit-logs/audit-logs.component';
-import {ClrTabsModule} from '@clr/angular';
+import {ClrIconModule, ClrTabsModule} from '@clr/angular';
 import {AuditLogsService} from './audit-logs/audit-logs.service';
 
 
 
 @NgModule({
   imports: [
+    ClrIconModule,
     ClrTabsModule,
     CommonModule,
     RouterModule.forChild(userSecurityRoutes)
