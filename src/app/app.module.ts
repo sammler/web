@@ -27,6 +27,7 @@ import {appRoutes} from './app.routes';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {AuthGuard} from './_guards/auth.guard';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
   ],
   exports: [],
   providers: [
+    AuthGuard,
     AlertService,
     AuthenticationService,
     JwtHelperService,

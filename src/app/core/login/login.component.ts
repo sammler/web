@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from '../../_services/authentication.service';
+import {AuthenticationService} from '../../_services';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
@@ -59,12 +59,15 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         result => {
+          console.log('result', result);
           this.router.navigate([this.returnUrl]);
         }, error => {
           console.error('We have a login error: ', error);
-          this.loginError = true;
-          this.loginMsg = error.error.message;
+          return false;
+          // this.loading = false;
+          // this.loginError = true;
+          // this.loginMsg = error.error.message;
         });
+    return false;
   }
-
 }

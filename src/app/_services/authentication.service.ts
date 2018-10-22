@@ -38,32 +38,31 @@ export class AuthenticationService {
     // const headers = new HttpHeaders();
     // headers.append('Content-Type', 'application/json');
 
+    debugger;
     return this.http.post<any>(
       '/auth-service/v1/user/login',
       { username, password }
       )
-      .pipe(map((res: any) => {
+      .pipe(map((user: any) => {
 
-        if (res.status !== 200) {
-          throwError(res);
-        }
+        // if (user.status !== 200) {
+        // debugger;
+        //   throwError(user);
+        // }
 
-        if (res) {
+        if (user && user.token) {
           // store user details and basic auth credentials in local storage
           // to keep user logged in between page refreshes
           // data.authdata = window.btoa(username + ':' + password);
 
-          localStorage.setItem('currentUser', JSON.stringify(res['token']));
+          localStorage.setItem('currentUser', JSON.stringify(user['token']));
           this.loggedIn = true;
         }
-        return res;
+        return user;
       }));
   }
 
   logout() {
-
-
-
     localStorage.removeItem('currentUser');
     this.loggedIn = false;
   }

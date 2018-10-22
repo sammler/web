@@ -1,6 +1,7 @@
 <h2>Login</h2>
 
 <form clrForm clrLayout="horizontal" (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
+
   <section class="form-block">
     <div class="from-group" *ngIf="loginError">
       <div class="alert alert-danger">
@@ -40,7 +41,7 @@
       <clr-control-error *clrIfError="'required'">Password is required.</clr-control-error>
     </clr-input-container>
       <br/>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button [disabled]="loading" type="submit" class="btn btn-primary">Login</button>
       or <a [routerLink]="['/register']">Register</a>
   </section>
 </form>
