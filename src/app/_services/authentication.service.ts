@@ -38,7 +38,7 @@ export class AuthenticationService {
     // const headers = new HttpHeaders();
     // headers.append('Content-Type', 'application/json');
 
-    debugger;
+    //debugger;
     return this.http.post<any>(
       '/auth-service/v1/user/login',
       { username, password }

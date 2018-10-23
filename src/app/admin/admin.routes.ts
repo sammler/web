@@ -1,8 +1,8 @@
 import {Routes} from '@angular/router';
 import {AuthGuardService as AuthGuard} from '../_services/auth-guard.service';
 
-import {LogsComponent} from './logs/logs.component';
+import {AuditLogsComponent} from './audit-logs/audit-logs.component';
 
 export const adminRoutes: Routes = [
-  {path: 'admin/logs/list', component: LogsComponent, canActivate: [AuthGuard]  },
+  {path: 'admin/audit-logs', component: AuditLogsComponent, canActivate: [AuthGuard]  },
 ];

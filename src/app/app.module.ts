@@ -32,17 +32,17 @@ import {AuthGuard} from './_guards/auth.guard';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes),
-    ClarityModule,
-    ClrIconModule,
-    ClrFormsNextModule,
-    BrowserAnimationsModule,
-    CoreModule,
-    UserModule,
     AdminModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    ClarityModule,
+    ClrFormsNextModule,
+    ClrIconModule,
+    CoreModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
     StrategiesModule,
-    HttpClientModule
+    UserModule,
   ],
   declarations: [
     AppComponent,

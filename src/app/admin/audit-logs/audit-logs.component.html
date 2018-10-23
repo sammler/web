@@ -1,0 +1,32 @@
+<h2>Admin > Audit-Logs</h2>
+
+<div class="action-bar">
+  <div class="content">
+    <clr-dropdown>
+      <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+        Actions
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+        <label class="dropdown-header">Audit Logs</label>
+        <button type="button" clrDropdownItem (click)="deleteAll()">Delete All</button>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</div>
+<div>
+  <div class="no-recs" *ngIf="auditLogs?.length === 0">
+    no recs here
+  </div>
+  <div class="audit-log-entry" *ngFor="let entry of auditLogs">
+    <div class="content">
+      {{entry.event_domain}}.{{entry.event}}<br/>
+    </div>
+    <div class="footer">
+      Show details
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,18 +1,26 @@
+// Core modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 
-import {LogsComponent} from './logs/logs.component';
+// Modules
+import {ClrDropdownModule, ClrIconModule} from '@clr/angular';
 
+// Components
+import {AuditLogsComponent} from './audit-logs/audit-logs.component';
+
+// Other
 import {adminRoutes} from './admin.routes';
 
 @NgModule({
   imports: [
+    ClrDropdownModule,
+    ClrIconModule,
     CommonModule,
     RouterModule.forChild(adminRoutes)
   ],
   declarations: [
-    LogsComponent
+    AuditLogsComponent
   ],
   exports: [
 

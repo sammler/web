@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuditLogsService {
 
   constructor(private http: HttpClient) { }
@@ -11,10 +13,13 @@ export class AuditLogsService {
   getAuditLogs():Observable<any> {
     const apiUrl = '/audit-log-service/v1/audit-logs';
     return this.http.get(apiUrl)
-      // .map(res => {
-      //   console.log(res);
-      // })
       .pipe(catchError(this.handleError<any[]>('getAuditLogs', [])))
+  }
+
+  deleteAll():Observable<any> {
+    const apiUrl = '/audit-log-service/v1/audit-logs';
+    return this.http.delete(apiUrl)
+      .pipe(catchError(this.handleError<any[]>('deleteAll', [])))
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -23,5 +28,6 @@ export class AuditLogsService {
       return of(result as T);
     }
   }
+
 }
 
