@@ -9,9 +9,13 @@ import {ClrDropdownModule, ClrIconModule} from '@clr/angular';
 // Components
 import {AuditLogsComponent} from './audit-logs/audit-logs.component';
 
+// Services
+import {SchedulerService} from './scheduler/scheduler.service';
+
 // Other
 import {adminRoutes} from './admin.routes';
 import {GravatarDirective} from '../_directives/gravatar.directive';
+import {SchedulerComponent} from './scheduler/scheduler.component';
 
 @NgModule({
   imports: [
@@ -23,9 +27,12 @@ import {GravatarDirective} from '../_directives/gravatar.directive';
   declarations: [
     AuditLogsComponent,
     GravatarDirective,
+    SchedulerComponent,
   ],
   exports: [],
-  providers: []
+  providers: [
+    SchedulerService
+  ]
 })
 export class AdminModule {
 }
