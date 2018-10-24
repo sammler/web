@@ -7,20 +7,20 @@
 <table class="table">
   <thead>
   <tr>
+    <th>When</th>
     <th>Day</th>
     <th>Hour</th>
     <th>Action</th>
     <th>Description</th>
-    <th>Details</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let log of auditLogs">
+    <td>{{moment(log.ts).fromNow()}}</td>
     <td>{{moment(log.ts).format('YYYY-MM-DD')}}</td>
     <td>{{moment(log.ts).format('HH:mm:ss')}}</td>
-    <td>{{log.event_name}}</td>
+    <td><a href="javascript:void(0);">{{log.event}}</a></td>
     <td>{{log.description}}</td>
-    <td></td>
   </tr>
   </tbody>
 </table>
