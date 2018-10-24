@@ -1,47 +1,50 @@
 <h2>Login</h2>
 
-<form clrForm clrLayout="horizontal" (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
-
-  <section class="form-block">
-    <div class="from-group" *ngIf="loginError">
-      <div class="alert alert-danger">
-        <div class="alert-items">
-          <div class="alert-item static">
-            <div class="alert-icon-wrapper">
-              <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="alert-text">
+<form
+      clrForm
+      novalidate
+      clrLayout="horizontal"
+      (ngSubmit)="onSubmit($event)"
+      [formGroup]="loginForm"
+      >
+  <div class="from-group" *ngIf="loginError">
+    <div class="alert alert-danger">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+          </div>
+          <span class="alert-text">
             {{loginMsg}}
         </span>
-          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <clr-input-container>
-      <label for="username">Login</label>
-      <input clrInput
-             type="text"
-             id="username"
-             formControlName="username"
-             placeholder="Enter value here"
-             size="45">
-      <clr-control-error *clrIfError="'required'">Username is required.</clr-control-error>
-    </clr-input-container>
+  <clr-input-container>
+    <label for="username">Login</label>
+    <input clrInput
+           type="text"
+           id="username"
+           formControlName="username"
+           placeholder="Enter value here"
+           size="45">
+    <clr-control-error *clrIfError="'required'">Username is required.</clr-control-error>
+  </clr-input-container>
 
-    <clr-input-container>
-      <label for="password">Password</label>
-      <input clrInput
-             type="password"
-             formControlName="password"
-             id="password"
-             required
-             placeholder="Enter your password"
-             size="35">
-      <clr-control-error *clrIfError="'required'">Password is required.</clr-control-error>
-    </clr-input-container>
-      <br/>
-      <button [disabled]="loading" type="submit" class="btn btn-primary">Login</button>
-      or <a [routerLink]="['/register']">Register</a>
-  </section>
+  <clr-input-container>
+    <label for="password">Password</label>
+    <input clrInput
+           type="password"
+           formControlName="password"
+           id="password"
+           required
+           placeholder="Enter your password"
+           size="35">
+    <clr-control-error *clrIfError="'required'">Password is required.</clr-control-error>
+  </clr-input-container>
+  <br/>
+  <button [disabled]="loading" type="submit" class="btn btn-primary">Login</button>
+  or <a [routerLink]="['/register']">register</a>
 </form>

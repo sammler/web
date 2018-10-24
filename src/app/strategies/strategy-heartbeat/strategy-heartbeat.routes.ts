@@ -4,5 +4,5 @@ import {HomeComponent} from './home/home.component';
 
 
 export const strategyHeartbeatRoutes: Routes = [
-  {path: 'user/strategy/heartbeat', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'user/strategy/heartbeat', component: HomeComponent /*, canActivate: [AuthGuard] */},
 ];

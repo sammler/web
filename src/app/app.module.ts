@@ -40,7 +40,7 @@ import {AuthGuard} from './_guards/auth.guard';
     ClrIconModule,
     CoreModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
     StrategiesModule,
     UserModule,
   ],

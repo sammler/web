@@ -8,6 +8,6 @@ import {AuditLogsComponent} from './audit-logs/audit-logs.component';
 
 
 export const userSecurityRoutes: Routes = [
-  {path: 'user/security', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'user/security/audit-logs', component: AuditLogsComponent, canActivate: [AuthGuard]},
+  {path: 'user/security', component: HomeComponent /*, canActivate: [AuthGuard] */},
+  {path: 'user/security/audit-logs', component: AuditLogsComponent /*, canActivate: [AuthGuard] */},
 ];
