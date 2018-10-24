@@ -8,7 +8,7 @@ export class GravatarDirective implements OnInit, OnChanges {
 
   @Input('email') email: string;
   @Input('size') size: number = 36;
-  @Input('fallbaack') fallback: string = 'mm';
+  @Input('fallback') fallback: string = 'mm';
 
   constructor(private elementRef: ElementRef) {
 
