@@ -1,9 +1,11 @@
 <h2>Profile</h2>
 
-Username:<br/>
-FirstName:<br/>
-LastName:<br/>
-Token:
-<code>
-  {{JSON.stringify(authService.currentUser)}}
-</code>
+Id: {{authService.currentUser._id}}<br/>
+Username: {{authService.currentUser.username}}<br/>
+FirstName: {{authService.currentUser.firstname}}<br/>
+LastName: {{authService.currentUser.lastname}}<br/>
+<br/>
+
+<pre>
+  {{authService.currentUser | json}}
+</pre>
