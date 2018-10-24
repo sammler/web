@@ -2,6 +2,26 @@ version: '3.3'
 
 services:
 
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    logging:
+        driver: none
+
+  mongo-seed:
+    image: sammlerio/mongo-seed
+    container_name: mongo-seed
+    environment:
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+    volumes:
+      - ./config/db-seed:/data
+    command: [
+      "mongoimport --host mongo --port 27017 --db sammlerio --mode upsert --type json --file /data/auth-service~~user.json --jsonArray"
+    ]
+
   nats-streaming:
     image: nats-streaming
     ports:
@@ -28,14 +48,6 @@ services:
    depends_on:
      - mongo
 
-  mongo:
-    image: mongo
-    container_name: mongo
-    ports:
-      - "27017:27017"
-    logging:
-        driver: none
-
   auth-service:
     image: sammlerio/auth-service
     container_name: auth-service
@@ -45,9 +57,11 @@ services:
       - NODE_ENV=development
       - PORT=3010
       - JWT_SECRET=foo
+      - AUDIT_LOG=true
       - MONGODB_DEBUG=false
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
       - NATS_STREAMING_HOST=nats-streaming
       - NATS_STREAMING_PORT=4222
     depends_on:
@@ -63,6 +77,7 @@ services:
       - PORT=3004
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
       - NATS_STREAMING_HOST=nats-streaming
       - NATS_STREAMING_PORT=4222
     depends_on:
