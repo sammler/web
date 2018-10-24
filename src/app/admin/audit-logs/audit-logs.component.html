@@ -19,10 +19,23 @@
     no recs here
   </div>
   <div class="audit-log-entry" *ngFor="let entry of auditLogs">
-    <div class="content">
-      {{entry.event_domain}}.{{entry.event}}<br/>
+    <div class="clr-row">
+      <div class="clr-col-1">
+        <img class="gravatar" gravatar [email]="entry.actor_details?.email"/>
+      </div>
+      <div class="clr-col-8">
+        <a href="#">
+          {{entry.event_domain}}.{{entry.event}}<br/>
+        </a>
+      </div>
+      <div class="clr-col-2">
+        {{moment(entry.ts).fromNow()}}
+      </div>
+      <div class="clr-col-1">
+        <span class="label label-info">{{entry.action_type}}</span>
+      </div>
     </div>
-    <div class="footer">
+    <div class="footer" *ngIf="false">
       Show details
     </div>
   </div>

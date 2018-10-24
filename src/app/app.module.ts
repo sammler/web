@@ -45,10 +45,10 @@ import {AuthGuard} from './_guards/auth.guard';
     UserModule,
   ],
   declarations: [
+    AlertComponent,
     AppComponent,
-    SideNavComponent,
     HeaderComponent,
-    AlertComponent
+    SideNavComponent,
   ],
   exports: [],
   providers: [
