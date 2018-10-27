@@ -6,12 +6,17 @@ import {RouterModule} from '@angular/router';
 import {strategyHeartbeatRoutes} from './strategy-heartbeat.routes';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
-import {ClrTabsModule} from '@clr/angular';
+import {ClrFormsNextModule, ClrInputContainer, ClrInputModule, ClrTabsModule} from '@clr/angular';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
+    ClrFormsNextModule,
+    ClrInputModule,
     ClrTabsModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(strategyHeartbeatRoutes),
   ],
   declarations: [

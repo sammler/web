@@ -10,22 +10,25 @@ import {ClrFormsNextModule, ClrIconModule} from '@clr/angular';
 import {RegisterComponent} from './register/register.component';
 
 @NgModule({
+  imports: [
+    CommonModule, //Todo: needed?
+    ClrFormsNextModule,
+    ClrIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(coreRoutes)
+  ],
   declarations: [
     LoginComponent,
     PageNotFoundComponent,
     RegisterComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ClrIconModule,
-    ClrFormsNextModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(coreRoutes)
-  ],
   exports: [
     RouterModule
   ],
+  providers: [
+
+  ]
 })
 export class CoreModule {
 }

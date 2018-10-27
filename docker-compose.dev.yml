@@ -57,13 +57,13 @@ services:
       - NODE_ENV=development
       - PORT=3010
       - JWT_SECRET=foo
-      - AUDIT_LOG=true
       - MONGODB_DEBUG=false
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
       - MONGODB_DATABASE=sammlerio
       - NATS_STREAMING_HOST=nats-streaming
       - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=true
     depends_on:
       - mongo
       - nats-streaming
