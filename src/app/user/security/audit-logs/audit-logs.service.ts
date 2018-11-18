@@ -8,20 +8,20 @@ export class AuditLogsService {
 
   constructor(private http: HttpClient) { }
 
-  getAuditLogs():Observable<any> {
+  getAuditLogs(): Observable<any> {
     const apiUrl = '/audit-log-service/v1/audit-logs';
     return this.http.get(apiUrl)
       // .map(res => {
       //   console.log(res);
       // })
-      .pipe(catchError(this.handleError<any[]>('getAuditLogs', [])))
+      .pipe(catchError(this.handleError<any[]>('getAuditLogs', [])));
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
-    }
+    };
   }
 }
 

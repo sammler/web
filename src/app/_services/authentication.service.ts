@@ -24,10 +24,10 @@ export class AuthenticationService {
   }
 
   get currentUser(): User {
-    let u: string = localStorage.getItem('currentUser');
+    const u: string = localStorage.getItem('currentUser');
     if (u) {
       const jwtHelper = new JwtHelperService();
-      let decoded = jwtHelper.decodeToken(u);
+      const decoded = jwtHelper.decodeToken(u);
       return decoded;
     }
     return null;
@@ -38,7 +38,7 @@ export class AuthenticationService {
     // const headers = new HttpHeaders();
     // headers.append('Content-Type', 'application/json');
 
-    //debugger;
+    // debugger;
     return this.http.post<any>(
       '/auth-service/v1/user/login',
       { username, password }

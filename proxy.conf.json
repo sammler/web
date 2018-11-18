@@ -13,5 +13,19 @@
     "pathRewrite": {
       "^/audit-log-service": ""
     }
+  },
+  "/strategy-heartbeat": {
+    "target": "http://strategy-heartbeat:3001",
+    "secure": false,
+    "pathRewrite": {
+      "^/strategy-heartbeat": ""
+    }
+  },
+  "/user-profile": {
+    "target": "http://user-profile:3011",
+    "secure": false,
+    "pathRewrite": {
+      "^/user-profile": ""
+    }
   }
 }

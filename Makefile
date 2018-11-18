@@ -1,3 +1,5 @@
+NODE_VER := $(shell cat .nvmrc)
+
 help:								                ## Show this help.
 	@echo ''
 	@echo 'Available commands:'
@@ -22,7 +24,7 @@ down-dev:														## Tear down the development environment
 .PHONY: down-dev
 
 build:															## Build the docker image (prod)
-	docker build -t sammlerio/web -f Dockerfile.prod .
+	docker build --build-arg NODE_VER=$(NODE_VER) -t sammlerio/web -f Dockerfile.prod .
 .PHONY: build
 
 build-dev:													## Build the docker image (dev)

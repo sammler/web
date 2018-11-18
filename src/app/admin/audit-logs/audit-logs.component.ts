@@ -22,14 +22,14 @@ export class AuditLogsComponent implements OnInit {
       .subscribe(data => {
         console.log('audit-logs', data);
         this.auditLogs = data;
-      })
+      });
   }
 
   deleteAll() {
     this.auditLogService.deleteAll()
       .subscribe(result => {
         console.log('audit-logs:deleteAll', result);
-      })
+      });
   }
 
 }

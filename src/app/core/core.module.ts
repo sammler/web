@@ -11,7 +11,7 @@ import {RegisterComponent} from './register/register.component';
 
 @NgModule({
   imports: [
-    CommonModule, //Todo: needed?
+    CommonModule, // Todo: needed?
     ClrFormsNextModule,
     ClrIconModule,
     FormsModule,

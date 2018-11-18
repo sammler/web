@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {StrategyGithubModule} from './strategy-github/strategy-github.module';
-import {StrategyHeartbeatModule} from './strategy-heartbeat/strategy-heartbeat.module';
 import {RouterModule} from '@angular/router';
 
+import {StrategyGithubModule} from './strategy-github/strategy-github.module';
+import {StrategyHeartbeatModule} from './strategy-heartbeat/strategy-heartbeat.module';
+
 import {strategiesRoutes} from './strategies.routes';
+import {StrategyHeartbeatService} from './strategy-heartbeat/strategy-heartbeat.service';
 
 @NgModule({
   imports: [
@@ -20,7 +22,7 @@ import {strategiesRoutes} from './strategies.routes';
     RouterModule
   ],
   providers: [
-
+    StrategyHeartbeatService
   ]
 })
 export class StrategiesModule { }

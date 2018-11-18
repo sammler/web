@@ -2,14 +2,9 @@ version: '3.3'
 
 services:
 
-  mongo:
-    image: mongo
-    container_name: mongo
-    ports:
-      - "27017:27017"
-    logging:
-        driver: none
-
+  # --------------------------------------
+  #                 Seed
+  # --------------------------------------
   mongo-seed:
     image: sammlerio/mongo-seed
     container_name: mongo-seed
@@ -21,6 +16,18 @@ services:
     command: [
       "mongoimport --host mongo --port 27017 --db sammlerio --mode upsert --type json --file /data/auth-service~~user.json --jsonArray"
     ]
+
+  # --------------------------------------
+  #              Infrastructure
+  # --------------------------------------
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    logging:
+        driver: none
+
 
   nats-streaming:
     image: nats-streaming
@@ -36,7 +43,17 @@ services:
       "--store", "FILE",
       "--dir", "datastore"
     ]
+  natsboard:
+    image: urashidmalik/natsboard
+    ports:
+      - "4000:3000"
+      - "4001:3001"
+    environment:
+      - NATS_MONITOR_URL=http://nats-streaming:8222
 
+  # --------------------------------------
+  #              Services
+  # --------------------------------------
   web:
    image: sammlerio/web-dev
    container_name: web
@@ -80,6 +97,41 @@ services:
       - MONGODB_DATABASE=sammlerio
       - NATS_STREAMING_HOST=nats-streaming
       - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=false
+    depends_on:
+      - mongo
+      - nats-streaming
+
+  strategy-heartbeat:
+    image: sammlerio/strategy-heartbeat
+    container_name: strategy-heartbeat
+    ports:
+      - "3101:3101"
+    environment:
+      - PORT=3101
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=true
+    depends_on:
+      - mongo
+      - nats-streaming
+
+  user-profile:
+    image: sammlerio/user-profile
+    container_name: user-profile
+    ports:
+      - "3011:3011"
+    environment:
+      - PORT=3011
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=true
     depends_on:
       - mongo
       - nats-streaming

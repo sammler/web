@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
-    let usr = new User('', '', this.f.username.value, this.f.password.value, '');
+    const usr = new User('', '', this.f.username.value, this.f.password.value, '');
 
 console.log('usr', usr);
 
@@ -54,7 +54,7 @@ console.log('usr', usr);
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);
-          //this.router.navigate(['/login']);
+          // this.router.navigate(['/login']);
         },
         error => {
           this.alertService.error(error);

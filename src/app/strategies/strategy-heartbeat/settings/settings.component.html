@@ -8,7 +8,7 @@
   <section class="form-block">
 
     <div class="form-group">
-      <label for="toggleStrategyEnabled">Heartbeat strategy is enabled</label>
+      <label for="toggleStrategyEnabled">Heartbeat strategy is {{f.toggleStrategyEnabled.value === true ? 'enabled' : 'disabled'}}</label>
       <div class="toggle-switch">
         <input type="checkbox" id="toggleStrategyEnabled" formControlName="toggleStrategyEnabled">
         <label for="toggleStrategyEnabled"></label>

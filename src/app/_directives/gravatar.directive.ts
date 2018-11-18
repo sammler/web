@@ -7,8 +7,8 @@ import * as md5 from 'md5';
 export class GravatarDirective implements OnInit, OnChanges {
 
   @Input('email') email: string;
-  @Input('size') size: number = 36;
-  @Input('fallback') fallback: string = 'mm';
+  @Input('size') size = 36;
+  @Input('fallback') fallback = 'mm';
 
   constructor(private elementRef: ElementRef) {
 

@@ -46,6 +46,9 @@ export class SettingsComponent implements OnInit, OnChanges {
     console.log('-- every_day:', this.f.toggleEveryDay.value || false);
     console.log('-- every_week:', this.f.toggleEveryWeek.value || false);
     console.groupEnd();
+
+
+
   }
 
 }

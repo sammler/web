@@ -1,12 +1,12 @@
 export class User {
   firstname?: string;
   lastname?: string;
-  local:Local
+  local: Local;
   constructor(firstname, lastname, username, password, email) {
     this.firstname = firstname;
     this.lastname = lastname;
 
-    let local = new Local();
+    const local = new Local();
     local.username = username;
     local.password = password;
     local.email = email;
