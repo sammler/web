@@ -27,7 +27,7 @@
     "@auth0/angular-jwt": "2.0.0",
     "@clr/angular": "0.13.5",
     "@clr/icons": "0.13.5",
-    "@clr/ui": "0.13.5",
+    "@clr/ui": "0.13.10",
     "@webcomponents/custom-elements": "1.2.1",
     "core-js": "2.5.7",
     "md5": "2.2.1",
