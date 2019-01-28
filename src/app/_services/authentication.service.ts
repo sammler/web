@@ -4,6 +4,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 import {of, throwError} from 'rxjs';
 import {User} from '../_models/user';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import * as _ from 'lodash';
 
 
 @Injectable({
@@ -27,10 +28,16 @@ export class AuthenticationService {
     const u: string = localStorage.getItem('currentUser');
     if (u) {
       const jwtHelper = new JwtHelperService();
-      const decoded = jwtHelper.decodeToken(u);
+      let decoded = jwtHelper.decodeToken(u);
+      decoded.token = u;
       return decoded;
     }
     return null;
+  }
+
+  get currentUserToken(): string {
+
+    return localStorage.getItem('currentUser');
   }
 
   login(username: string, password: string) {
@@ -43,22 +50,24 @@ export class AuthenticationService {
       '/auth-service/v1/user/login',
       { username, password }
       )
-      .pipe(map((user: any) => {
+      .pipe(map((result: any) => {
+
+        console.log('/auth-service/v1/user/login > result', result);
 
         // if (user.status !== 200) {
         // debugger;
         //   throwError(user);
         // }
 
-        if (user && user.token) {
+        if (result && result.token) {
           // store user details and basic auth credentials in local storage
           // to keep user logged in between page refreshes
           // data.authdata = window.btoa(username + ':' + password);
 
-          localStorage.setItem('currentUser', JSON.stringify(user['token']));
+          localStorage.setItem('currentUser', result.token);
           this.loggedIn = true;
         }
-        return user;
+        return result;
       }));
   }
 

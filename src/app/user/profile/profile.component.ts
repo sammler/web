@@ -11,8 +11,7 @@ export class ProfileComponent implements OnInit {
   private JSON;
 
   constructor(
-    private authService: AuthenticationService,
-    private userService: UserService
+    public authService: AuthenticationService
   ) {
     this.JSON = JSON;
   }

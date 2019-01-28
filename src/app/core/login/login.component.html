@@ -7,21 +7,6 @@
       (ngSubmit)="onSubmit($event)"
       [formGroup]="loginForm"
       >
-  <div class="from-group" *ngIf="loginError">
-    <div class="alert alert-danger">
-      <div class="alert-items">
-        <div class="alert-item static">
-          <div class="alert-icon-wrapper">
-            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
-          </div>
-          <span class="alert-text">
-            {{loginMsg}}
-        </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <clr-input-container>
     <label for="username">Login</label>
     <input clrInput

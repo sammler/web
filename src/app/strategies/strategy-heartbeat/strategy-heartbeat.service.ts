@@ -8,7 +8,6 @@ export class StrategyHeartbeatService {
 
   constructor(private http: HttpClient) {
 
-
   }
 
   getSettings() {
@@ -16,6 +15,8 @@ export class StrategyHeartbeatService {
   }
 
   saveSettings() {
+
+
 
   }
 }

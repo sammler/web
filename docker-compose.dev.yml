@@ -6,7 +6,7 @@ services:
   #                 Seed
   # --------------------------------------
   mongo-seed:
-    image: sammlerio/mongo-seed
+    image: stefanwalther/mongo-seed
     container_name: mongo-seed
     environment:
       - MONGODB_HOST=mongo
@@ -16,12 +16,14 @@ services:
     command: [
       "mongoimport --host mongo --port 27017 --db sammlerio --mode upsert --type json --file /data/auth-service~~user.json --jsonArray"
     ]
+    depends_on:
+      - mongo
 
   # --------------------------------------
   #              Infrastructure
   # --------------------------------------
   mongo:
-    image: mongo
+    image: sammlerio/mongo
     container_name: mongo
     ports:
       - "27017:27017"
@@ -30,7 +32,7 @@ services:
 
 
   nats-streaming:
-    image: nats-streaming
+    image: sammlerio/nats-streaming
     ports:
       - "4222:4222"
       - "4223:4223"
@@ -44,7 +46,7 @@ services:
       "--dir", "datastore"
     ]
   natsboard:
-    image: urashidmalik/natsboard
+    image: sammlerio/natsboard
     ports:
       - "4000:3000"
       - "4001:3001"
@@ -52,7 +54,89 @@ services:
       - NATS_MONITOR_URL=http://nats-streaming:8222
 
   # --------------------------------------
-  #              Services
+  #         Depending Services
+  # --------------------------------------
+  auth-service:
+    image: sammlerio/auth-service
+    container_name: auth-service
+    ports:
+      - "3010:3010"
+    environment:
+      - PORT=3010
+      - NODE_ENV=development
+      - JWT_SECRET=foo
+      - MONGODB_DEBUG=false
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=true
+    depends_on:
+      - mongo
+      - mongo-seed
+      - nats-streaming
+
+  audit-log-service:
+    image: sammlerio/audit-logs
+    container_name: audit-logs
+    ports:
+      - "3004:3004"
+    environment:
+      - PORT=3004
+      - NODE_ENV=production
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=false
+    depends_on:
+      - mongo
+      - mongo-seed
+      - nats-streaming
+
+  strategy-heartbeat:
+    image: sammlerio/strategy-heartbeat
+    container_name: strategy-heartbeat
+    ports:
+      - "3101:3101"
+    environment:
+      - PORT=3101
+      - NODE_ENV=development
+      - JWT_SECRET=foo
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=true
+    depends_on:
+      - mongo
+      - mongo-seed
+      - nats-streaming
+
+  user-profile:
+    image: sammlerio/user-profile
+    container_name: user-profile
+    ports:
+      - "3011:3011"
+    environment:
+      - PORT=3011
+      - NODE_ENV=production
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=sammlerio
+      - NATS_STREAMING_HOST=nats-streaming
+      - NATS_STREAMING_PORT=4222
+      - ENABLE_AUDIT_LOG=true
+    depends_on:
+      - mongo
+      - mongo-seed
+      - nats-streaming
+
+  # --------------------------------------
+  #              Service
   # --------------------------------------
   web:
    image: sammlerio/web-dev
@@ -65,75 +149,6 @@ services:
    depends_on:
      - mongo
 
-  auth-service:
-    image: sammlerio/auth-service
-    container_name: auth-service
-    ports:
-      - "3010:3010"
-    environment:
-      - NODE_ENV=development
-      - PORT=3010
-      - JWT_SECRET=foo
-      - MONGODB_DEBUG=false
-      - MONGODB_HOST=mongo
-      - MONGODB_PORT=27017
-      - MONGODB_DATABASE=sammlerio
-      - NATS_STREAMING_HOST=nats-streaming
-      - NATS_STREAMING_PORT=4222
-      - ENABLE_AUDIT_LOG=true
-    depends_on:
-      - mongo
-      - nats-streaming
 
-  audit-log-service:
-    image: sammlerio/audit-log-service
-    container_name: audit-log-service
-    ports:
-      - "3004:3004"
-    environment:
-      - PORT=3004
-      - MONGODB_HOST=mongo
-      - MONGODB_PORT=27017
-      - MONGODB_DATABASE=sammlerio
-      - NATS_STREAMING_HOST=nats-streaming
-      - NATS_STREAMING_PORT=4222
-      - ENABLE_AUDIT_LOG=false
-    depends_on:
-      - mongo
-      - nats-streaming
-
-  strategy-heartbeat:
-    image: sammlerio/strategy-heartbeat
-    container_name: strategy-heartbeat
-    ports:
-      - "3101:3101"
-    environment:
-      - PORT=3101
-      - MONGODB_HOST=mongo
-      - MONGODB_PORT=27017
-      - MONGODB_DATABASE=sammlerio
-      - NATS_STREAMING_HOST=nats-streaming
-      - NATS_STREAMING_PORT=4222
-      - ENABLE_AUDIT_LOG=true
-    depends_on:
-      - mongo
-      - nats-streaming
-
-  user-profile:
-    image: sammlerio/user-profile
-    container_name: user-profile
-    ports:
-      - "3011:3011"
-    environment:
-      - PORT=3011
-      - MONGODB_HOST=mongo
-      - MONGODB_PORT=27017
-      - MONGODB_DATABASE=sammlerio
-      - NATS_STREAMING_HOST=nats-streaming
-      - NATS_STREAMING_PORT=4222
-      - ENABLE_AUDIT_LOG=true
-    depends_on:
-      - mongo
-      - nats-streaming
 
 

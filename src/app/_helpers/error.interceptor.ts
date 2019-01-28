@@ -14,7 +14,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       if (err.status === 401) {
 
         // Todo: Re-enable again
-        console.error('whatever error', err.message);
+        console.error('401 error ...', err.message);
         // auto logout if 401 response returned from api
         // this.authService.logout();
         // location.reload(true);

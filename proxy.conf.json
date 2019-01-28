@@ -15,7 +15,7 @@
     }
   },
   "/strategy-heartbeat": {
-    "target": "http://strategy-heartbeat:3001",
+    "target": "http://strategy-heartbeat:3101",
     "secure": false,
     "pathRewrite": {
       "^/strategy-heartbeat": ""

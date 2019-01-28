@@ -1,5 +1,6 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {StrategyHeartbeatService} from '../strategy-heartbeat.service';
 
 @Component({
   selector: 'strategy-heartbeat-settings',
@@ -12,9 +13,15 @@ export class SettingsComponent implements OnInit, OnChanges {
 
   constructor(
     private formBuilder: FormBuilder,
+    private heartBeatService: StrategyHeartbeatService
   ) { }
 
   ngOnInit() {
+
+    this.heartBeatService.getSettings()
+      .subscribe(result => {
+        console.log('heartbeat result: ', result);
+      });
 
     this.strategyHeartbeatSettingsForm = this.formBuilder.group({
       toggleStrategyEnabled: [''],
@@ -46,6 +53,8 @@ export class SettingsComponent implements OnInit, OnChanges {
     console.log('-- every_day:', this.f.toggleEveryDay.value || false);
     console.log('-- every_week:', this.f.toggleEveryWeek.value || false);
     console.groupEnd();
+
+
 
 
 

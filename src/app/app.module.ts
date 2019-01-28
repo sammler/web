@@ -26,6 +26,7 @@ import {UserService} from './_services/user.service';
 import {appRoutes} from './app.routes';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
+import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {AuthGuard} from './_guards/auth.guard';
 
@@ -57,7 +58,8 @@ import {AuthGuard} from './_guards/auth.guard';
     AuthenticationService,
     JwtHelperService,
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
