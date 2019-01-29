@@ -10,10 +10,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
     // Todo: changed from: http://jasonwatmore.com/post/2018/10/29/angular-7-user-registration-and-login-example-tutorial
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      console.log('Hurray, we have an HttpIntercepter ... JWT ...');
-        // add authorization header with jwt token if available
         let token = this.authenticationService.currentUserToken;
-        console.log('token', token);
         if (token) {
             request = request.clone({
                 setHeaders: {

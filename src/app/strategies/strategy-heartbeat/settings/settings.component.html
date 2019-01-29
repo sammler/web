@@ -8,7 +8,8 @@
   <section class="form-block">
 
     <div class="form-group">
-      <label for="toggleStrategyEnabled">Heartbeat strategy is {{f.toggleStrategyEnabled.value === true ? 'enabled' : 'disabled'}}</label>
+      <label for="toggleStrategyEnabled">Heartbeat strategy is {{f.toggleStrategyEnabled.value === true ? 'enabled' :
+        'disabled'}}</label>
       <div class="toggle-switch">
         <input type="checkbox" id="toggleStrategyEnabled" formControlName="toggleStrategyEnabled">
         <label for="toggleStrategyEnabled"></label>
@@ -16,10 +17,17 @@
     </div>
 
     <div class="form-group sub-group">
-    <label for="toggleEveryMinute">Every minute</label>
+      <label for="toggleEveryMinute">Every minute</label>
       <div class="toggle-switch">
         <input type="checkbox" id="toggleEveryMinute" formControlName="toggleEveryMinute">
         <label for="toggleEveryMinute"></label>
+      </div>
+    </div>
+    <div class="form-group sub-group">
+      <label for="toggleEveryTwoMinutes">Every two minutes</label>
+      <div class="toggle-switch">
+        <input type="checkbox" id="toggleEveryTwoMinutes" formControlName="toggleEveryTwoMinutes">
+        <label for="toggleEveryTwoMinutes"></label>
       </div>
     </div>
     <div class="form-group sub-group">
@@ -55,6 +63,13 @@
       <div class="toggle-switch">
         <input type="checkbox" id="toggleEveryWeek" formControlName="toggleEveryWeek">
         <label for="toggleEveryWeek"></label>
+      </div>
+    </div>
+    <div class="form-group sub-group">
+      <label for="toggleEveryMonth">Every month</label>
+      <div class="toggle-switch">
+        <input type="checkbox" id="toggleEveryMonth" formControlName="toggleEveryMonth">
+        <label for="toggleEveryMonth"></label>
       </div>
     </div>
   </section>
