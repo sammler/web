@@ -40,17 +40,19 @@ export class SettingsComponent implements OnInit, OnChanges {
       .subscribe(result => {
         this.setting = result[0];
         console.log('heartbeat settings: ', this.setting);
-        this.strategyHeartbeatSettingsForm.patchValue({
-          toggleStrategyEnabled: this.setting.enabled,
-          toggleEveryMinute: this.setting.every_minute.enabled,
-          toggleEveryTwoMinutes: this.setting.every_two_minutes.enabled,
-          toggleEveryFiveMinutes: this.setting.every_five_minutes.enabled,
-          toggleEveryTenMinutes: this.setting.every_ten_minutes.enabled,
-          toggleEveryHour: this.setting.every_hour.enabled,
-          toggleEveryDay: this.setting.every_day.enabled,
-          toggleEveryWeek: this.setting.every_week.enabled,
-          toggleEveryMonth: this.setting.every_month.enabled,
-        });
+        if (this.setting) {
+          this.strategyHeartbeatSettingsForm.patchValue({
+            toggleStrategyEnabled: this.setting.enabled,
+            toggleEveryMinute: this.setting.every_minute.enabled,
+            toggleEveryTwoMinutes: this.setting.every_two_minutes.enabled,
+            toggleEveryFiveMinutes: this.setting.every_five_minutes.enabled,
+            toggleEveryTenMinutes: this.setting.every_ten_minutes.enabled,
+            toggleEveryHour: this.setting.every_hour.enabled,
+            toggleEveryDay: this.setting.every_day.enabled,
+            toggleEveryWeek: this.setting.every_week.enabled,
+            toggleEveryMonth: this.setting.every_month.enabled,
+          });
+        }
       });
   }
 
@@ -99,7 +101,7 @@ export class SettingsComponent implements OnInit, OnChanges {
     payLoad.every_week = {
       enabled: this.f.toggleEveryWeek.value || false
     };
-    payLoad.every_month= {
+    payLoad.every_month = {
       enabled: this.f.toggleEveryMonth.value || false
     };
 
