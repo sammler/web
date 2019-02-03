@@ -14,7 +14,7 @@ services:
     volumes:
       - ./config/db-seed:/data
     command: [
-      "mongoimport --host mongo --port 27017 --db sammlerio --mode upsert --type json --file /data/auth-service~~user.json --jsonArray"
+      "mongoimport --host mongo --port 27017 --db sammlerio --mode upsert --type json --file /data/auth-service~~users.json --jsonArray"
     ]
     depends_on:
       - mongo
@@ -84,7 +84,7 @@ services:
       - "3004:3004"
     environment:
       - PORT=3004
-      - NODE_ENV=production
+      - NODE_ENV=development
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
       - MONGODB_DATABASE=sammlerio
@@ -118,10 +118,7 @@ services:
     command: ["npm", "run", "start"]
     depends_on:
       - mongo
-      - mongo-seed
       - nats-streaming
-
-
 
   strategy-heartbeat:
     image: sammlerio/strategy-heartbeat
@@ -130,7 +127,7 @@ services:
       - "3101:3101"
       - "9229:9229"
     environment:
-      - NODE_ENV=test
+      - NODE_ENV=development
       - PORT=3101
       - JWT_SECRET=foo
       - MONGODB_HOST=mongo
@@ -145,9 +142,8 @@ services:
       - DEBUG='strategy-heartbeat:* -strategy-heartbeat:swagger-config:* -strategy-heartbeat:routes-config:*'
     depends_on:
       - mongo
-      - mongo-seed
       - nats-streaming
-    command: ["npm", "run", "start:debug"]
+    command: ["npm", "run", "start"]
 
   user-profile:
     image: sammlerio/user-profile
@@ -156,7 +152,7 @@ services:
       - "3011:3011"
     environment:
       - PORT=3011
-      - NODE_ENV=production
+      - NODE_ENV=development
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
       - MONGODB_DATABASE=sammlerio

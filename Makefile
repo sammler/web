@@ -48,3 +48,9 @@ up:
 down:
 	docker-compose down -t 0
 .PHONY: down
+
+docker-clean:
+	docker stop $(docker ps -aq)
+	docker rm $(docker ps -aq)
+.PHONY: docker-clean
+
