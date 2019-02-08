@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+
 import {AuthenticationService} from '../../_services';
-import {UserService} from '../../_services/user.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -9,6 +10,7 @@ import {UserService} from '../../_services/user.service';
 })
 export class ProfileComponent implements OnInit {
   private JSON;
+  public environment: any = environment;
 
   constructor(
     public authService: AuthenticationService

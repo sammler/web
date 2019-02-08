@@ -1,11 +1,18 @@
 <h2>Profile</h2>
 
-Id: {{authService.currentUser?._id}}<br/>
-Username: {{authService.currentUser?.username}}<br/>
+user_id/_id: {{authService.currentUser?._id}}<br/>
 FirstName: {{authService.currentUser?.firstname}}<br/>
 LastName: {{authService.currentUser?.lastname}}<br/>
 <br/>
 
 <pre>
-  {{authService.currentUser | json}}
+{{authService.currentUser | json}}
+</pre>
+
+<hr />
+
+<h2>Environment variables</h2>
+
+<pre>
+{{environment | json}}
 </pre>
