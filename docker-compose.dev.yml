@@ -65,16 +65,15 @@ services:
       - PORT=3010
       - NODE_ENV=development
       - JWT_SECRET=foo
-      - MONGODB_DEBUG=false
       - MONGODB_HOST=mongo
       - MONGODB_PORT=27017
       - MONGODB_DATABASE=sammlerio
+      - MONGODB_DEBUG=false
       - NATS_STREAMING_HOST=nats-streaming
       - NATS_STREAMING_PORT=4222
       - ENABLE_AUDIT_LOG=true
     depends_on:
       - mongo
-      - mongo-seed
       - nats-streaming
 
   audit-log-service:
@@ -93,7 +92,6 @@ services:
       - ENABLE_AUDIT_LOG=false
     depends_on:
       - mongo
-      - mongo-seed
       - nats-streaming
 
   jobs-service:
@@ -161,7 +159,6 @@ services:
       - ENABLE_AUDIT_LOG=true
     depends_on:
       - mongo
-      - mongo-seed
       - nats-streaming
 
   # --------------------------------------
