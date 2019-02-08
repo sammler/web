@@ -16,6 +16,7 @@ import {SchedulerService} from './scheduler/scheduler.service';
 import {adminRoutes} from './admin.routes';
 import {GravatarDirective} from '../_directives/gravatar.directive';
 import {SchedulerComponent} from './scheduler/scheduler.component';
+import { EnvComponent } from './env/env.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import {SchedulerComponent} from './scheduler/scheduler.component';
   declarations: [
     AuditLogsComponent,
     GravatarDirective,
-    SchedulerComponent,
+    SchedulerComponent
   ],
   exports: [],
   providers: [
