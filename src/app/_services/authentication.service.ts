@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {SettingsService} from './settings.service';
 import {catchError, map, tap} from 'rxjs/operators';
 import {of, throwError} from 'rxjs';
 import {User} from '../_models/user';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import * as _ from 'lodash';
-
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,8 @@ export class AuthenticationService {
   private loggedIn = false;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private settingsService: SettingsService
   ) {
     this.loggedIn = !!localStorage.getItem('currentUser');
   }
@@ -47,12 +47,12 @@ export class AuthenticationService {
 
     // debugger;
     return this.http.post<any>(
-      '/auth-service/v1/user/login',
-      { username, password }
-      )
+      `${this.settingsService.settings.authService}/v1/user/login`,
+      {username, password}
+    )
       .pipe(map((result: any) => {
 
-        console.log('/auth-service/v1/user/login > result', result);
+        console.log(`${this.settingsService.settings.authService}/v1/user/login > result`, result);
 
         // if (user.status !== 200) {
         // debugger;
